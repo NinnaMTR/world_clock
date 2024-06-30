@@ -1,6 +1,15 @@
 body {
-  background-color: lightgrey;
+  background: #d5def5;
   font-family: "Roboto", sans-serif;
+}
+
+a {
+  color: #430f58;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 select {
@@ -9,26 +18,28 @@ select {
   width: 100%;
   border-radius: 4px;
   padding: 10px;
-  background-color: white;
+  background-color: #d5def5;
 }
 
 h1 {
   text-align: center;
-  font-size: 36px;
+  font-size: 40px;
+  color: #430f58;
   font-family: "Sofia", sans-serif;
 }
 
 h2 {
   margin: 0 0 10px;
-  font-size: 28px;
+  font-size: 36px;
+  font-family: "Sofia", sans-serif;
 }
 
 .container {
   max-width: 600px;
   margin: 60px auto;
   background-color: white;
-  padding: 30px;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  padding: 20px 30px 20px 30px;
+  box-shadow: #8594e4 0px 7px 29px 0px;
   border-radius: 10px;
 }
 

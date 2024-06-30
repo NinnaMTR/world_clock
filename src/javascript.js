@@ -14,17 +14,32 @@ function updateTime() {
     );
   }
 
-  //Paris
-  let parisElement = document.querySelector("#paris");
+  //Tokyo
+  let tokyoElement = document.querySelector("#tokyo");
 
-  if (parisElement) {
-    let parisDateElement = parisElement.querySelector(".date");
-    let parisTimeElement = parisElement.querySelector(".time");
+  if (tokyoElement) {
+    let tokyoDateElement = tokyoElement.querySelector(".date");
+    let tokyoTimeElement = tokyoElement.querySelector(".time");
 
-    let parisTime = moment().tz("Europe/Paris");
+    let tokyoTime = moment().tz("Asia/Tokyo");
 
-    parisDateElement.innerHTML = parisTime.format("MMMM Do YYYY");
-    parisTimeElement.innerHTML = parisTime.format(
+    tokyoDateElement.innerHTML = tokyoTime.format("MMMM Do YYYY");
+    tokyoTimeElement.innerHTML = tokyoTime.format(
+      "h:mm:ss [<small>]A[</small>]"
+    );
+  }
+
+  //New York
+  let newYorkElement = document.querySelector("#new-york");
+
+  if (newYorkElement) {
+    let newYorkDateElement = newYorkElement.querySelector(".date");
+    let newYorkTimeElement = newYorkElement.querySelector(".time");
+
+    let newYorkTime = moment().tz("America/New_York");
+
+    newYorkDateElement.innerHTML = newYorkTime.format("MMMM Do YYYY");
+    newYorkTimeElement.innerHTML = newYorkTime.format(
       "h:mm:ss [<small>]A[</small>]"
     );
   }
@@ -36,27 +51,42 @@ function updateCity(event) {
   if (cityTimezone == "current") {
     cityTimezone = moment.tz.guess();
   }
+  if (cityTimezone == "Europe/Lisbon") {
+    cityEmoji = "🇵🇹";
+  }
+  if (cityTimezone == "Europe/Paris") {
+    cityEmoji = "🇫🇷";
+  }
+  if (cityTimezone == "America/New_York") {
+    cityEmoji = "🇺🇸";
+  }
+  if (cityTimezone == "Africa/Cairo") {
+    cityEmoji = "🇪🇬";
+  }
+  if (cityTimezone == "Australia/Sydney") {
+    cityEmoji = "🇦🇺";
+  }
 
   let cityName = cityTimezone.replace("_", " ").split("/")[1];
-
   let cityTime = moment().tz(cityTimezone);
+
   let citiesElement = document.querySelector("#cities");
 
   citiesElement.innerHTML = `
     <div class="city">
         <div>
-            <h2>${cityName}</h2>
+            <h2>${cityEmoji} ${cityName}</h2>
             <div class="date">${cityTime.format("MMMM Do YYYY")}</div>
         </div>
         <div class="time">${cityTime.format(
           "h:mm:ss"
         )} <small>${cityTime.format("A")}</small></div>
-    </div>`;
+    </div>
+    <a href="index.html">Back to all Cities</a>`;
 }
 
 updateTime();
 setInterval(updateTime, 1000);
 
 let citiesSelectElement = document.querySelector("#city");
-
 citiesSelectElement.addEventListener("change", updateCity);
